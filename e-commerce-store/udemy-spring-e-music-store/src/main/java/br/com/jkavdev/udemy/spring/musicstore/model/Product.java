@@ -1,7 +1,15 @@
 package br.com.jkavdev.udemy.spring.musicstore.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
 
+	@Id
+	@GeneratedValue
+	private Long productId;
 	private String productName;
 	private String productCategory;
 	private String productDescription;
@@ -10,6 +18,14 @@ public class Product {
 	private String productStatus;
 	private int productStock;
 	private String productManufacturer;
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
 
 	public String getProductName() {
 		return productName;
