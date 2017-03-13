@@ -8,6 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import br.com.jkavdev.udemy.spring.domain.BlogPost;
 import br.com.jkavdev.udemy.spring.domain.DataSource;
 import br.com.jkavdev.udemy.spring.service.BlogPostService;
+import br.com.jkavdev.udemy.spring.service.EmailService;
 import br.com.jkavdev.udemy.spring.service.impl.BlogPostServiceImpl;
 
 public class MainApplication {
@@ -35,6 +36,9 @@ public class MainApplication {
 		LOGGER.debug("datasource url: " + dataSource.getUrl());
 		LOGGER.debug("datasource senha: " + dataSource.getPassword());
 		LOGGER.debug("datasource usuario: " + dataSource.getUsername());
+		
+		EmailService emailService = context.getBean(EmailService.class);
+		emailService.sendEmail();
 
 		// Fechando contexto do spring
 		((ConfigurableApplicationContext) context).close();
