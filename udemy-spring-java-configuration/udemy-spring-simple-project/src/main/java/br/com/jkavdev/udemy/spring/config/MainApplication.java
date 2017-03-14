@@ -9,6 +9,7 @@ import br.com.jkavdev.udemy.spring.domain.BlogPost;
 import br.com.jkavdev.udemy.spring.domain.DataSource;
 import br.com.jkavdev.udemy.spring.service.BlogPostService;
 import br.com.jkavdev.udemy.spring.service.EmailService;
+import br.com.jkavdev.udemy.spring.service.ServiceManager;
 import br.com.jkavdev.udemy.spring.service.impl.BlogPostServiceImpl;
 
 public class MainApplication {
@@ -16,6 +17,7 @@ public class MainApplication {
 	private static final Logger LOGGER = LoggerFactory.getLogger(BlogPostServiceImpl.class);
 
 	public static void main(String[] args) {
+		LOGGER.debug("Iniciando contexto Spring............................................................");
 		// Contexto do spring
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
 
@@ -39,7 +41,11 @@ public class MainApplication {
 		
 		EmailService emailService = context.getBean(EmailService.class);
 		emailService.sendEmail();
+		
+		ServiceManager serviceManager = context.getBean(ServiceManager.class);
+		serviceManager.sendBlogPost(blogPost);
 
+		LOGGER.debug("Fechando contexto Spring............................................................");
 		// Fechando contexto do spring
 		((ConfigurableApplicationContext) context).close();
 	}

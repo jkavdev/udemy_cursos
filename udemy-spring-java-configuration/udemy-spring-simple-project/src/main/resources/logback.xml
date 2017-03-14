@@ -17,8 +17,8 @@
 		</encoder>
 	</appender>
 
-	<logger name="org.springframework" level="trace" />
-	<logger name="org.springframework.web" level="trace" />
+	<logger name="org.springframework" level="info" />
+	<logger name="org.springframework.web" level="info" />
 
 	<root level="trace">
 		<appender-ref ref="file" />
