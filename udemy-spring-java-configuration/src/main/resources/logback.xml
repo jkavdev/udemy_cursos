@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<property name="LOG_HOME" value="c:/webmvc-project-spring/logs" />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%-5level %logger{0} - %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="file" class="ch.qos.logback.core.FileAppender">
+		<file>${LOG_HOME}/error.log</file>
+		<encoder>
+			<Pattern>%-5level %logger{0} - %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework" level="info" />
+	<logger name="org.springframework.web" level="info" />
+
+	<root level="trace">
+		<appender-ref ref="file" />
+		<appender-ref ref="console" />
+	</root>
+
+</configuration>
