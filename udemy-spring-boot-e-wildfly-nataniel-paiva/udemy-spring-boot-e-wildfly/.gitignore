@@ -1,0 +1,7 @@
+/build/
+/.project
+/.tern-project
+/.classpath
+/bin/
+/target/
+/.settings/
