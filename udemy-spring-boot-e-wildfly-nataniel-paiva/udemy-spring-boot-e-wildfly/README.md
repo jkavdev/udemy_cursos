@@ -2,6 +2,11 @@
 
 # Aula 3
 
+# Configuração do lombok 
+
+- Eclipse - <https://projectlombok.org/setup/eclipse>
+- Intellij - <https://projectlombok.org/setup/intellij>
+
 * Adicionando usuário manager no wildfly
 			
 	* Ir na pasta \bin do servidor
