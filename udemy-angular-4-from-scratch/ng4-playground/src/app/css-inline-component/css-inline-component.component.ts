@@ -10,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
     
     <h1 [ngClass]="titleClasses">Usando style classes</h1>
 
+    <h1 [style.color]="titleStyle">Usando style classes</h1>
+    <h1 [style.color]="titleStyleCase ? 'green' : 'pink'">Usando style classes</h1>
+    <h1 [ngStyle]="titleStyles">Usando style classes</h1>
+
   `
   ,
   styles: [`
@@ -37,6 +41,12 @@ export class CssInlineComponentComponent implements OnInit {
   titleClasses = {
     'red-title': true,
     'large-title': true
+  };
+  titleStyle = "blue"
+  titleStyleCase = true;
+  titleStyles = {
+    'color': 'pink',
+    'font-size': '4em'
   };
 
   constructor() { }
