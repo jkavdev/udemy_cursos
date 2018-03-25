@@ -7,6 +7,7 @@ import { NewComponentComponent } from './new-component/new-component.component';
 import { InlineComponentComponent } from './inline-component/inline-component.component';
 import { BindingComponentComponent } from './binding-component/binding-component.component';
 import { EventComponentComponent } from './event-component/event-component.component';
+import { CssInlineComponentComponent } from './css-inline-component/css-inline-component.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EventComponentComponent } from './event-component/event-component.compo
     NewComponentComponent,
     InlineComponentComponent,
     BindingComponentComponent,
-    EventComponentComponent
+    EventComponentComponent,
+    CssInlineComponentComponent
   ],
   imports: [
     BrowserModule
