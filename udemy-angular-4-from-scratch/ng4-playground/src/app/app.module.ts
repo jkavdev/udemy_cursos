@@ -8,6 +8,8 @@ import { InlineComponentComponent } from './inline-component/inline-component.co
 import { BindingComponentComponent } from './binding-component/binding-component.component';
 import { EventComponentComponent } from './event-component/event-component.component';
 import { CssInlineComponentComponent } from './css-inline-component/css-inline-component.component';
+import { DataService } from './data.service';
+import { ServiceComponentComponent } from './service-component/service-component.component';
 
 
 @NgModule({
@@ -17,12 +19,15 @@ import { CssInlineComponentComponent } from './css-inline-component/css-inline-c
     InlineComponentComponent,
     BindingComponentComponent,
     EventComponentComponent,
-    CssInlineComponentComponent
+    CssInlineComponentComponent,
+    ServiceComponentComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
