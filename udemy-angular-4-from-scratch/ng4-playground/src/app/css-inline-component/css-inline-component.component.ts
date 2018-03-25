@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
   template: `
   
     <h1>Vamos que ta funcionando</h1>
+    <h1 [class]="titleClass">Usando style class</h1>
+    <h1 [class.blue-title]="titleClass">Usando style class</h1>
+    
+    <h1 [ngClass]="titleClasses">Usando style classes</h1>
 
   `
   ,
@@ -14,10 +18,26 @@ import { Component, OnInit } from '@angular/core';
     text-decoration: underline;
     color: brown;
   }
+  
+  .red-title {
+    color: red;
+  }
+  .large-title {
+    font-size: 150px;
+  }
+  .blue-title {
+    color: blue;
+  }
 
   `]
 })
 export class CssInlineComponentComponent implements OnInit {
+
+  titleClass = 'red-title';
+  titleClasses = {
+    'red-title': true,
+    'large-title': true
+  };
 
   constructor() { }
 
