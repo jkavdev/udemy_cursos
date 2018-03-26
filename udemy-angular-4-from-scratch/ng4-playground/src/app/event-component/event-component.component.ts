@@ -21,7 +21,7 @@ export class EventComponentComponent implements OnInit {
     console.log('vamos que ta funcionando porra...........')
     console.log(event)
   }
-  enterEvent() {
+  enterEvent(event) {
     alert('Mouse porra ,kkk')
     alert(event)
   }
