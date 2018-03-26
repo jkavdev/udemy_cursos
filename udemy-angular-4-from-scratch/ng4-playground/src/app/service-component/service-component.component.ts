@@ -20,7 +20,7 @@ export class ServiceComponentComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.dataService.cars);
-    this.someproperty = this.dataService.myCars();
+    this.someproperty = JSON.stringify(this.dataService.myCars());
   }
 
 }
