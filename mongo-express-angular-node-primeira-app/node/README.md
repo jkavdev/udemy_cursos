@@ -115,3 +115,12 @@
         process.stdout.write(`O que vc pensou, troucha ${data.toString()}`)
         process.exit()
     })    
+
+* lendo arquivos do diretorio do modulo da aplicacao
+* modulo de leitura de arquivos `const fs = require('fs')`
+* le todos os arquivo do diretorio `fs.readdirSync(__dirname)` no caso o modulo do aplicacao
+* `files.forEach(f => console.log(f))` exibe todos os nomes dos arquivos
+
+    const fs = require('fs');
+    const files = fs.readdirSync(__dirname)
+    files.forEach(f => console.log(f))    
