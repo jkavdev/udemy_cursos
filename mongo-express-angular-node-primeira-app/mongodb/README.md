@@ -88,6 +88,12 @@
 
     db.billingCycles.find({year: 2017}).skip(1).limit(1).pretty()
 
+* exibindo apenas atributos especificos dos documento
+* o id vem por padrao, por isso indicamos que nao precisa, e apenas o nome
+* `, {_id:0, name:1}`
+
+    db.billingCycles.find({credits: {$exists: true}}, {_id:0, name:1}).pretty()
+
 # Agregacao
 
 * `$project:{credit:{$sum:"$credits.value"},debt:{$sum:"$debts.value"}}`
@@ -100,3 +106,19 @@
 	},{ 
 	    $group:{_id:null,credit:{$sum:"$credit"},debt:{$sum:"$debt"}} 
 	}])
+
+# Update
+
+* indicamos um filtro para os documento a serem atualizados
+* `{$and:[{month:1},{year:2017}]}`
+* indicamos os atributos a serem atualizados
+* `{$set:{credits:[{name: "Sálario", value:5000}]}}`
+
+    db.billingCycles.update( 
+        {$and:[{month:1},{year:2017}]}, 
+        {$set:{credits:[{name: "Sálario", value:5000}]}}
+    )    
+
+* visualizando alteracao, como fizemos a alteracao no primeiro documento
+    
+    db.billingCycles.findOne()
