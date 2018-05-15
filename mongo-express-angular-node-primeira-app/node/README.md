@@ -32,3 +32,5 @@
 * utilizando a funcao    
 
     console.log(utils.upper('Funcionadoooooooooooooo............'))     
+
+* todos os modulos sao `singleton` temos apenas uma instancia para todas as chamadas para o modulo
