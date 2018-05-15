@@ -2,6 +2,8 @@
 
 # MongoDb
 
+# Comandos Basicos
+
 * inicializando o servidor 
 
     mongod
@@ -29,3 +31,27 @@
 * removendo uma colecao    
 
     db.billingCycles.drop()
+
+# Inserts
+
+* nao precisamos criar uma collection para inserir um documento
+* aqui sera criado uma collection com toda estrutura necessario para o `insert`
+
+    db.billingCycles.insert({name: "Janeiro/17", month: 1, year: 2017})
+
+* inserindo com `save`
+
+    db.billingCycles.save({name: "Fevereiro/17", month: 2, year: 2017})
+
+* inserindo em varias linhas
+
+    db.billingCycles.insert({ 
+        name: "Março/2017", month: 3, year: 2017, 
+        credits: [ 
+            {name: "Sálario", value: 5000} 
+        ], 
+        debts: [ 
+            {name: "Luz", value: 100, status: "PAGO"}, 
+            {name: "Água", value: 150, status: "PENDENTE"}, 
+        ], 
+    })
