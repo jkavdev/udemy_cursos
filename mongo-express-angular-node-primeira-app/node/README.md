@@ -34,3 +34,19 @@
     console.log(utils.upper('Funcionadoooooooooooooo............'))     
 
 * todos os modulos sao `singleton` temos apenas uma instancia para todas as chamadas para o modulo
+
+* nao temos acesso a variavel criada no global, pois nao atribuimos esta variavel ao global
+
+    const PI = 3.14
+    console.log(PI)
+    console.log(global.PI)
+
+* mas podemos atribuir um valor caso queiramos
+
+    global.obj = {name: 'Olha o global funcionandooooooooooo!'}
+
+* podemos acessar este valor em qualquer lugar
+
+    const s1 = require('./ex04_global')
+    console.log(global.obj.name)
+    console.log(obj.name)        
