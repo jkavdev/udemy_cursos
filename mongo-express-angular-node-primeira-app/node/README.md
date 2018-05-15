@@ -105,3 +105,13 @@
 * passando os parametros para `node`
 
     node ex08_process --producao outro massa
+
+* recebendo dados da entrada padrao pelo angular
+* `process.stdout.write` chama funcao de escrever
+* `process.stdin.on('data', function(data){}` chama funcao de entrada de dados
+
+    process.stdout.write('Usando entrada do angular!  ')
+    process.stdin.on('data', function(data){
+        process.stdout.write(`O que vc pensou, troucha ${data.toString()}`)
+        process.exit()
+    })    
