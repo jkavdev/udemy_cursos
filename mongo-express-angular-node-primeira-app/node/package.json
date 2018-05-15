@@ -1,0 +1,15 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "* criando uma funcao com ecmascript 6, e atribuindo a `ola`",
+  "main": "ex01.js",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jhonatan Kolen (jkavdev)",
+  "license": "ISC"
+}

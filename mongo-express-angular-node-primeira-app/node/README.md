@@ -65,3 +65,13 @@
 
     const s1 = require('./ex05_module')
     s1.digaOi()    
+
+# Gerenciamento de Pacotes
+
+* iniciando um projeto com o gerenciador de pacotes do `Node`
+
+    npm init
+
+* instalando o `lodash`, `--save` indica que sera local, na pasta
+
+    npm install lodash --save
