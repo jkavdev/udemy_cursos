@@ -87,3 +87,21 @@
 
     const moduloComoParametro = require('./ex07_param')
     moduloComoParametro('Olha meu Parametro AEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
+
+* visualizando os argumentos passados pelo `node`    
+* `process.argv` contem algumas informacoes dos parametros que sao passados pelo `node`
+* verifica se o parametro passado esta entre os parametros do node `return process.argv.indexOf(param) !== -1`
+
+    console.log(process.argv)
+    function temParam(param) {
+        return process.argv.indexOf(param) !== -1
+    }
+    if (temParam('--producao')) {
+        console.log('Fullllll Atention bitchs')
+    } else {
+        console.log('Nao tem')
+    }
+
+* passando os parametros para `node`
+
+    node ex08_process --producao outro massa
