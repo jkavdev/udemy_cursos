@@ -13,3 +13,22 @@
 * para executar, apenas ir no documento digitar o comando
 
     node ex01.js    
+
+* criando uma funcao em um arquivo
+
+    function upper(text) {
+        return text.toUpperCase()
+    }
+
+* se quisermos expor esta funcao, podemos expor com o node    
+
+    module.exports = { upper }    
+    module.exports = { upper: upper }   
+
+* importando a funcao/modulo, para isso usamos o `require('./ex02_utils')` com o caminho relatrilo
+
+    const utils = require('./ex02_utils')
+
+* utilizando a funcao    
+
+    console.log(utils.upper('Funcionadoooooooooooooo............'))     
