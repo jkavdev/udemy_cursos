@@ -55,3 +55,35 @@
             {name: "Água", value: 150, status: "PENDENTE"}, 
         ], 
     })
+
+# Selects
+
+* exibindo todos os documentos da collections
+
+    db.billingCycle.find()
+
+* exibindo todos os documentos num formato json 'bonito'        
+
+    db.billingCycles.find().pretty()
+
+* exibindo um unico registro, no caso o primeiro que encontrar
+
+    db.billingCycles.findOne()    
+
+* exibindo um unico registro, no caso o primeiro que encontrar, com filtro
+
+    db.billingCycles.findOne({month: 2})
+
+    db.billingCycles.find({$or: [{month: 1}, {month: 2}]}).pretty()
+
+* exibindo apenas os documentos com a seguinte propriedades
+
+    db.billingCycles.find({credits: {$exists: true}}).pretty()    
+
+* exibindo os documento com filtro e ignorando o primeiro registro
+
+    db.billingCycles.find({year: 2017}).skip(1).pretty()    
+
+* exibindo os documento com filtro e pegando apenas um registro
+
+    db.billingCycles.find({year: 2017}).skip(1).limit(1).pretty()
