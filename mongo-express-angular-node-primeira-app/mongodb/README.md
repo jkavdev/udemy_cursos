@@ -122,3 +122,21 @@
 * visualizando alteracao, como fizemos a alteracao no primeiro documento
     
     db.billingCycles.findOne()
+
+# Removes
+
+* exibindo o total de documentos no banco
+
+    db.billingCycles.count()
+
+* removendo um documento de acordo com um filtro
+
+    db.billingCycles.remove({month:2})
+
+* removendo apenas um documento de acordo com um filtro
+
+    db.billingCycles.remove({month:2}, 1)
+
+* removendo o banco de dados
+
+    db.dropDatabase();
