@@ -75,3 +75,15 @@
 * instalando o `lodash`, `--save` indica que sera local, na pasta
 
     npm install lodash --save
+
+* recebendo parametros e utilizando `backchicks`, 
+* `console.log('Param informado foi ${param}')` `backchicks`
+
+    module.exports = function(param){
+        console.log(`Param informado foi ${param}`)
+    }    
+
+* chamando o modulo
+
+    const moduloComoParametro = require('./ex07_param')
+    moduloComoParametro('Olha meu Parametro AEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
