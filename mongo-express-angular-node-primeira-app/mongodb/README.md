@@ -87,3 +87,16 @@
 * exibindo os documento com filtro e pegando apenas um registro
 
     db.billingCycles.find({year: 2017}).skip(1).limit(1).pretty()
+
+# Agregacao
+
+* `$project:{credit:{$sum:"$credits.value"},debt:{$sum:"$debts.value"}}`
+* criara uma projecao com duas retornos das somas dos debitos e creditos
+* `$group:{_id:null,credit:{$sum:"$credit"},debt:{$sum:"$debt"}}`
+* agrupara os resultados da projecao em duas variaveis, a soma de creditos e debitos
+
+    db.billingCycles.aggregate([{ 
+	    $project:{credit:{$sum:"$credits.value"},debt:{$sum:"$debts.value"}}, 
+	},{ 
+	    $group:{_id:null,credit:{$sum:"$credit"},debt:{$sum:"$debt"}} 
+	}])
