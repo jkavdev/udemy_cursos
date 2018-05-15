@@ -50,3 +50,18 @@
     const s1 = require('./ex04_global')
     console.log(global.obj.name)
     console.log(obj.name)        
+
+* o `this` faz referencia ao modulo esportado, podemos ver a diferenca
+
+    console.log(global === this) > false
+    console.log(module === this) > false
+    console.log(module.exports === this) > true
+
+* podemos tambem exportar uma funcao com o `this`
+
+    this.digaOi = () => console.log('Tá funcionandooooooooo, usando this nesta porra!')
+
+* acessando a funcao
+
+    const s1 = require('./ex05_module')
+    s1.digaOi()    
