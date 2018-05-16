@@ -118,3 +118,18 @@
 * `{{ctrl.value | upper}}`
 
     <h1>{{ctrl.value | upper}}</h1>    
+
+# Factory
+
+* criando uma `factory`    
+* no qual retorna um objeto com a definicao de suas funcionalidades
+* `return { upper }`
+
+    angular.module('app').factory('utils', function () {
+        function upper(input) {
+            return input.toUpperCase()
+        }
+        return { upper }
+    })
+
+* utilizando a `factory` no `controller` `angular.module('app').controller('MeuController', [ 'utils',`
