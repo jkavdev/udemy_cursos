@@ -64,3 +64,13 @@
     server.use('/api/teste', function(req, res){
         console.log('Funcionando com USE TEST.................')
     })
+
+* mapeando uma rota de requisicao e adicionando varios middlewares
+* criando a rota pra aceitar as requisicao a partir de `cliente` `server.route('/clientes')`
+* e depois encadeando as chamadas aos tipos de requisicoes
+
+    server.route('/clientes')
+        .get((req, res) => res.send('Lista de clientes'))
+        .post((req, res) => res.send('Adicionando cliente'))
+        .put((req, res) => res.send('Alterando cliente'))
+        .delete((req, res) => res.send('Removendo cliente'))
