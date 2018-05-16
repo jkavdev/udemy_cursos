@@ -133,3 +133,15 @@
     })
 
 * utilizando a `factory` no `controller` `angular.module('app').controller('MeuController', [ 'utils',`
+
+# Service
+
+* a `service` nao difere muito da `factory`, `angular.module('app').service('utils', function () {}`
+* criando uma funcao e disponilizando-a, `this.upper = function (input) {}`
+* temos que atribuir os valores do services ao `this`, se nao a funcionalidade nao sera exportada
+
+    angular.module('app').service('utils', function () {
+        this.upper = function (input) {
+            return input.toUpperCase()
+        }
+    })
