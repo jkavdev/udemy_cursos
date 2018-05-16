@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fundamento do Angular</title>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+
+    <script>
+
+        angular.module('app', [])
+
+        angular.module('app').controller('MeuController', [
+            '$scope',
+            function ($scope) {
+
+                $scope.value = 10
+                $scope.inc = function () {
+                    $scope.value++
+                }
+            }
+        ])
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <div ng-controller="MeuController">
+        <h1>{{value}}</h1>
+
+        <input type="text" ng-model="value">
+        <button ng-click="inc()">Incrementar</button>
+
+    </div>
+
+</body>
+
+</html>

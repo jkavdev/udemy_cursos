@@ -40,3 +40,33 @@
     One time databind = {{:: value}} <br>
 
     <input type="text" ng-model="value">        
+
+# Controller
+
+* criando um `controller`
+* indicamos o nome do controller `angular.module('app').controller('MeuController', [`
+* suas dependencias `'$scope',`
+* e o controller em si `function ($scope) {}`, utilizando o `$scope`
+
+    angular.module('app').controller('MeuController', [
+            '$scope',
+            function ($scope) {
+                $scope.value = 10
+                $scope.inc = function () {
+                    $scope.value++
+                }
+            }
+        ])
+
+* tudo que for atribuido ao `$scope` sera disponibilizado tambem na view, `html`        
+
+    $scope.value = 10
+    <h1>{{value}}</h1>
+
+* adicionando um `controller` na view
+
+    <div ng-controller="MeuController">
+        <h1>{{value}}</h1>
+        <input type="text" ng-model="value">
+        <button ng-click="inc()">Incrementar</button>
+    </div>    
