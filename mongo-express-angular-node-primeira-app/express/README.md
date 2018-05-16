@@ -47,3 +47,20 @@
         console.log('Funcionando sem NEEXT.................')
         res.send('<h1>Funcionandoooooooooooooooooooooooooooo</h1>')
     })
+
+* utilizando metodo com base em uma requisicao
+* com `server.use('/', function(req, res){}` indicamos que temos uma `/` como base, e todo resto de requisicao entrara aqui
+* `server.use('/api/teste', function(req, res){}` sera executado caso alguma requisicao satisfaca esta condicao
+
+    server.get('/', function(req, res, next){
+        console.log('Funcionando com GET.................')
+        next()
+    })
+    server.use('/', function(req, res, next){
+        console.log('Funcionando com USE.................')
+        res.send('<h1>Funcionandoooooooooooooooooooooooooooo</h1>')
+        next()
+    })
+    server.use('/api/teste', function(req, res){
+        console.log('Funcionando com USE TEST.................')
+    })
