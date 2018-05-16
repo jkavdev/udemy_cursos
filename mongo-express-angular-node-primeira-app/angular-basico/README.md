@@ -69,4 +69,34 @@
         <h1>{{value}}</h1>
         <input type="text" ng-model="value">
         <button ng-click="inc()">Incrementar</button>
-    </div>    
+    </div>  
+
+# Boas praticas, Controller AS
+
+* https://johnpapa.net/ definiu algumas boas praticas com o angularjs
+* uma delas e nao utilizar o `$scope` para alteracao do `controller` com a `view`
+
+* agora temos nosso controller, nao precisando do $scope
+* temos um objeto que armazenara suas informacoes, `const self = this`
+* `const self = this` atribuimos no inicio, pois o valor de `this` pode alterar para outro objeto
+* por garantimos que o valor seja o `controller` no inicio
+
+    angular.module('app').controller('MeuController', [
+            function () {
+                const self = this
+                self.value = 10
+                self.inc = function () {
+                    self.value++
+                }
+            }
+        ])
+
+* para acessar estes valores, temos que utilizar o padrao `Controller As`        
+* damos um apelido ao controller `<div ng-controller="MeuController as ctrl">`
+* acessando o valor do controller `<h1>{{ctrl.value}}</h1>`
+
+    <div ng-controller="MeuController as ctrl">
+        <h1>{{ctrl.value}}</h1>
+        <input type="text" ng-model="ctrl.value">
+        <button ng-click="ctrl.inc()">Incrementar</button>
+    </div>
