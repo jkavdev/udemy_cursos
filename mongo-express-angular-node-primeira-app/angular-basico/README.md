@@ -100,3 +100,21 @@
         <input type="text" ng-model="ctrl.value">
         <button ng-click="ctrl.inc()">Incrementar</button>
     </div>
+
+# Filter
+
+* criando um `filter`    
+* temos a definicao de um filtro, com nome `ùpper`
+* que retorna uma funcao transformando o input passado em maiusculo
+* `return function (input) { return input.toUpperCase() }`
+
+    angular.module('app').filter('upper', function () {
+        return function (input) {
+            return input.toUpperCase()
+        }
+    })
+
+* utilizando o `filter`, usamos o `|` para indicar o filtro
+* `{{ctrl.value | upper}}`
+
+    <h1>{{ctrl.value | upper}}</h1>    
