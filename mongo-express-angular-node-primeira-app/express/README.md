@@ -74,3 +74,32 @@
         .post((req, res) => res.send('Adicionando cliente'))
         .put((req, res) => res.send('Alterando cliente'))
         .delete((req, res) => res.send('Removendo cliente'))
+
+# Utilizando `Router`        
+
+* criando uma instancia do `Router`, `const router = express.Router()`
+* `router.use((req, res, next) => {}` indicando para qualquer requisicao esta rota sera chamada
+* `router.get('/produtos/:id', (req, res, next) => {}` indicando uma requisicao `get` para a rota e recebendo um parametro
+* no final temos que expor a rota `module.exports = router`
+
+    const express = require('express')
+    const router = express.Router()
+    router.use((req, res, next) => {
+        const init = Date.now()
+        next()
+        console.log(`Tempo = ${Date.now() - init} ms`)
+    })
+    router.get('/produtos/:id', (req, res, next) => {
+        res.json({id: req.params.id, name: 'Outra coisa'})
+    })
+    router.get('/clientes/:id/:name', (req, res, next) => {
+        res.json({id: req.params.id, name: req.params.name})
+    })
+    module.exports = router
+
+* utilizando a rota como um conjunto de `middlewares`
+* importando a rota `const router = require('./ex05_routes')`
+* indicando para a requisicao `/api`, sera chamado a rota, `server.use('/api', router)`
+
+    const router = require('./ex05_routes')
+    server.use('/api', router)    
