@@ -145,3 +145,26 @@
             return input.toUpperCase()
         }
     })
+
+# Directive
+
+* criando uma diretiva
+* definindo o nome da diretiva `angular.module('app').directive('meuRelogio', function () {}`
+* definindo o tipo da diretiva `restrict: 'AE',` `A` significa atributo `<div meu-relogio></div>`, `E` significa elemento `<meu-relogio></meu-relogio>`
+* `template: <h2>${new Date}</h2>` define o `html` da diretiva
+
+    angular.module('app').directive('meuRelogio', function () {
+        return {
+            restrict: 'AE',
+            template: `<h2>${new Date}</h2>`
+        }
+    })    
+
+* utilizando a diretiva
+* por padrao eh se criado a diretiva com o CamelCase padrao, `meuRelogio` vira `meu-relogio`
+
+    <h1>Atributo</h1>
+    <div meu-relogio></div>
+    <hr>
+    <h1>Elemento</h1>
+    <meu-relogio></meu-relogio>    
