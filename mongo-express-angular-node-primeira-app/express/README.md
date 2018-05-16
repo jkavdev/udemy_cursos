@@ -103,3 +103,18 @@
 
     const router = require('./ex05_routes')
     server.use('/api', router)    
+
+# Server e Router Singletons?    
+
+* por padrao uma referencia para um modulo e sempre um `singleton`, `(express1 === express2) = true`
+* o que nao ocorre tanto para `express1()` e `express1.Router()`, `(server1 === server2) = false` e `(router1 === router2) = false`
+
+    const express1 = require('express')
+    const express2 = require('express')
+    console.log(express1 === express2)
+    const server1 = express1()
+    const server2 = express1()
+    console.log(server1 === server2)
+    const router1 = express1.Router()
+    const router2 = express1.Router()
+    console.log(router1 === router2)
