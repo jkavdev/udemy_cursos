@@ -26,4 +26,17 @@
 
 * executando uma expressao do angular
 
-    <h1>Angular ta funcionado: {{true ? 'SIM' : 'NAO'}}</h1>    
+    <h1>Angular ta funcionado: {{true ? 'SIM' : 'NAO'}}</h1>
+
+# Binding
+
+* o angular atualiza os valores das expressoes de acordo com o seu model
+* se o model eh alterado, a expressao tambem eh alterada, ele cria um listener para a express
+* no qual ficara observando por mudancas, `Two Way databind = {{value}} <br>`
+* caso necessite apenas que este valor atualize apenas uma vez, podemos usar `One time databind = {{:: value}} <br>`
+* que indica ao angular que este valor sera atualizado apenas na sua primeira alteracao
+
+    Two Way databind = {{value}} <br>
+    One time databind = {{:: value}} <br>
+
+    <input type="text" ng-model="value">        
