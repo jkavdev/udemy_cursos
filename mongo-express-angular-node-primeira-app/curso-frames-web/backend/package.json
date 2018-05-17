@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "* primeiro de tudo, precisamos do angular\r * instalar o angular atraves do `npm` e criar um projeto `npm`",
-  "main": "index.js",
+  "main": "loader.js",
   "scripts": {
     "dev": "nodemon",
     "production": "pm2 start loader.js --name backend"

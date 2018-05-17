@@ -16,3 +16,18 @@
 
     "dev": "nodemon",
     "production": "pm2 start loader.js --name backend"
+
+# configurando o servidor da aplicacao
+
+* `require('body-parser')` fara alguns parses do corpo da requisicao
+* `server.use(bodyParser.urlencoded({ extended: true })` habilita a leitura de mais parametos/funcoes da requisicao
+* `server.use(bodyParser.json())` transforma o corpo da requisicao em `json`
+
+    const bodyParser = require('body-parser')
+    const express = require('express')
+    const server = express()
+    server.use(bodyParser.urlencoded({ extended: true }), () => console.log('Funcionando..........'))
+    server.use(bodyParser.json())
+    server.listen(port, function(){
+        console.log(`Olha o servidor ${port} rodando ae..................`)
+    })
