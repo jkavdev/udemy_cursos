@@ -104,3 +104,38 @@
 
     const billingCycleService = require('../api/billingCycle/billingCycleService')
     billingCycleService.register(router, '/billingCycles')
+
+# Testando os servicos criados
+
+* requisitando todos os `billingCycles`
+
+    GET /api/billingCycles HTTP/1.1
+    Host: localhost:3003
+
+* adicionando `billingCycle`
+
+    POST /api/billingCycles HTTP/1.1
+    Host: localhost:3003
+    Content-Type: application/x-www-form-urlencoded
+
+    name:Janeiro/17
+    month:1
+    year:2017
+    credits[0][name]:Salario de janeiro
+    credits[0][value]:8999
+    credits[1][name]:FGTS
+    credits[1][value]:1500
+    debts[0][name]:Conta de água
+    debts[0][value]:150
+    debts[1][name]:Conta de luz
+    debts[1][value]:150
+
+# Mensagens
+
+* alterando as mensagens de validacao
+
+    mongoose.Error.messages.general.required = "O atributo '{path}' é obrigatorio"
+
+* alterando as mensagens de validacao, no `schema`
+
+    value: { type: Number, min: 0, required: [true, 'Informe o valor do débito'] }
