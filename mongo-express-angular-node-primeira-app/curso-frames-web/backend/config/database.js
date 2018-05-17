@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-module.exports = mongoose.connect('mongodb://localhost/db_finance')
+module.exports = mongoose.connect('mongodb://localhost/db_finance_angular')
 
 mongoose.Error.messages.general.required = "O atributo '{PATH}' é obrigatorio."
 mongoose.Error.messages.Number.min = "O '{VALUE}' informado é menor que o limite mínimo {MIN}."
