@@ -82,3 +82,18 @@
 
     const BillingCycle = require("./billingCycle")
     BillingCycle.methods(['get', 'post', 'put', 'delete'])
+
+# Configurando as Rotas do Servidor
+
+* configurando rota do express, para interceptar todas as requisicoes `/api`
+
+    const express = require('express')
+    module.exports = function(server){
+        const router = express.Router()
+        server.use('/api', router)
+    }    
+
+* indicando que o modulo `router.js` necessita do `server` modulo
+
+    const server = require('./config/server')
+    require('./config/routes')(server)
