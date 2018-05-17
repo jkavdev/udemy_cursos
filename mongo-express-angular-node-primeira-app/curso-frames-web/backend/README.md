@@ -139,3 +139,18 @@
 * alterando as mensagens de validacao, no `schema`
 
     value: { type: Number, min: 0, required: [true, 'Informe o valor do débito'] }
+
+* outras mensagens
+
+    mongoose.Error.messages.Number.min = "O '{VALUE}' informado é menor que o limite mínimo {MIN}."
+    mongoose.Error.messages.Number.max = "O '{VALUE}' informado é maior que o limite mínimo {MAX}."
+    mongoose.Error.messages.String.enum = "'{VALUE}' não é válido para o atributo {PATH}."    
+
+# Comportamento ao realizar UPDATE    
+
+* quando realizado o `update`, o objeto de retorno nao eh o objeto alterado, e sim o objeto antigo
+* `BillingCycle.updateOptions({new: true` indica para trazer o objeto novo
+* `BillingCycle.updateOptions({runValidations: true})` indica ao realizar o `update` tambem verificar as validations dos campos
+
+
+    BillingCycle.updateOptions({new: true, runValidations: true})
