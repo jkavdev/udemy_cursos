@@ -168,3 +168,28 @@
     <hr>
     <h1>Elemento</h1>
     <meu-relogio></meu-relogio>    
+
+# Components
+
+* criando um componente `angular.module('app').component('field', {}`
+* definindo os atributos do componente `bindings: { id: '@', label: '@', model: '='}`
+* `model: '@'` indica que o seu valor no componente nao sera alterado
+* `model: '='` indica que o valor sera toweaydatabind, tanto no componente quanto na viu o valor sera alterado
+* `model: '<'` indica que o valor sera oneaydatabind, apenas o componente sera alterado
+
+
+    angular.module('app').component('field', {
+            bindings: {
+                id: '@',
+                label: '@',
+                model: '=',
+            }, 
+            template: `
+                <label for="{{$ctrl.id}}">{{$ctrl.label}}</label>
+                <input type="text" id="{{$ctrl.id}}" ng-model="$ctrl.model"><br>
+            `
+        })    
+
+* utilizando o componente
+
+    <field id="nome" label="Nome" model="ctrl.name"></field>        

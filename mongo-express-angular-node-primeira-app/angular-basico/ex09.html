@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fundamento do Angular</title>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+
+    <script>
+
+        angular.module('app', [])
+
+        angular.module('app').component('field', {
+            bindings: {
+                id: '@',
+                label: '@',
+
+                model: '=',
+                modelNaoMuda: '@',
+                modelMudaComponentApenas: '<'
+            }, 
+            template: `
+                <label for="{{$ctrl.id}}">{{$ctrl.label}}</label>
+                <input type="text" id="{{$ctrl.id}}" ng-model="$ctrl.model"><br>
+
+                <label for="{{$ctrl.id}}">{{$ctrl.label}}</label>
+                <input type="text" id="{{$ctrl.id}}" ng-model="$ctrl.modelNaoMuda"><br>
+
+                <label for="{{$ctrl.id}}">{{$ctrl.label}}</label>
+                <input type="text" id="{{$ctrl.id}}" ng-model="$ctrl.modelMudaComponentApenas">
+            `
+        })
+
+        angular.module('app').controller('MeuController', function(){
+            const self = this
+            self.name = 'Nicestes'            
+        })
+
+    </script>
+
+</head>
+
+<body>
+
+    <div ng-controller="MeuController as ctrl">
+        <h1>{{ctrl.name}}</h1>
+        <field id="nome" label="Nome" 
+        model="ctrl.name" 
+        modelNaoMuda="ctrl.name" 
+        modelMudaComponentApenas="ctrl.name"></field>
+    </div>
+
+</body>
+
+</html>
