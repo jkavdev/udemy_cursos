@@ -31,3 +31,15 @@
     server.listen(port, function(){
         console.log(`Olha o servidor ${port} rodando ae..................`)
     })
+
+# Conectando com o `MongoDB`
+
+* `require('mongoose')` objeto que contem funcionalidade de ler e configurar conexao com o `mongoDB`
+
+    const mongoose = require('mongoose')
+    module.exports = mongoose.connect('mongodb://localhost/db_finance')
+
+* arquivo `loader.js` contem apenas chamadas aos arquivos de configuracao
+
+    require('./config/server.js')
+    require('./config/database')    
