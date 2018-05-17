@@ -74,3 +74,11 @@
         debts: [debtSchema],
     })
     module.exports = restful.model('BiilingCycle', billingCycleSchema)    
+
+# Criando os servicos REST
+
+* importando os schemas/node-restful `require("./billingCycle")`
+* indicando quais requisicoes estarao disponiveis para este objeto `BillingCycle.methods(['get', 'post', 'put', 'delete'])`
+
+    const BillingCycle = require("./billingCycle")
+    BillingCycle.methods(['get', 'post', 'put', 'delete'])
