@@ -97,3 +97,10 @@
 
     const server = require('./config/server')
     require('./config/routes')(server)
+
+* adicionando os servicos `billingCycles` a objeto rota criado
+* importa o servico `const billingCycleService = require('../api/billingCycle/billingCycleService')`
+* indica ao servico rest, para criar todos os servicos rest, para o `router` e url base definida `/billingCycles`
+
+    const billingCycleService = require('../api/billingCycle/billingCycleService')
+    billingCycleService.register(router, '/billingCycles')
