@@ -48,3 +48,17 @@
 * nao retirara os comentarios 
 
     .pipe(uglifycss({ "uglyComments": true }))        
+
+* Configurando os arquivos da aplicacao
+* criara um `watcher` para todos os arquivos `html` dentro de app `return gulp.src([ 'app/**/*.html', ])`
+* ajudara na minificacao dos html, `.pipe(htmlmin({ collapseWhitespace: true }))`
+
+    return gulp.src([
+        'app/**/*.html',
+    ])
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('public/'))    
+
+* indica para fazer o compile do `js` para versoes mais antigas, garantindo mais compatibilidade com os browsers
+
+    .pipe(babel({ presets: ['env'] }))        
