@@ -62,3 +62,24 @@
 * indica para fazer o compile do `js` para versoes mais antigas, garantindo mais compatibilidade com os browsers
 
     .pipe(babel({ presets: ['env'] }))        
+
+# Configurando o servidor
+* realizara a observacao dos arquivos e chamara uma `task` reponsavel por tal alteracao `gulp.task('watch', () => { watch('app/**/*.html', () => gulp.start('app.html'))`
+
+    gulp.task('watch', () => {
+        watch('app/**/*.html', () => gulp.start('app.html'))
+        watch('app/**/*.css', () => gulp.start('app.css'))
+        watch('app/**/*.js', () => gulp.start('app.js'))
+        watch('app/**/*.*', () => gulp.start('app.assets'))
+    })
+
+* configura o servidor `gulp.task('server', ['watch'], () => {}`    
+* monitora a pasta `public` `gulp.src('public').pipe(webserver({`
+
+    gulp.task('server', ['watch'], () => {
+        return gulp.src('public').pipe(webserver({
+            livereload: true,
+            port: 3000,
+            open: true
+        }))
+    })
