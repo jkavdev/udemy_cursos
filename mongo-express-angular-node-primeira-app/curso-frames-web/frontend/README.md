@@ -30,3 +30,21 @@
             sequence('deps', 'app', 'server')
         }
     })
+
+# Configurando as dependencias
+
+* indicando os dependencias a serem importadas `return gulp.src([ '...' ])`
+* reduzira o arquivo ao minimo possivel `.pipe(uglify())`
+* produzira um arquivo final `js` `.pipe(concat('deps.min.js'))`
+* indica o destino final do arquivo `.pipe(gulp.dest('public/assets/js'))`
+
+    return gulp.src([
+        '...'
+    ])
+        .pipe(uglify())
+        .pipe(concat('deps.min.js'))
+        .pipe(gulp.dest('public/assets/js'))    
+
+* nao retirara os comentarios 
+
+    .pipe(uglifycss({ "uglyComments": true }))        
