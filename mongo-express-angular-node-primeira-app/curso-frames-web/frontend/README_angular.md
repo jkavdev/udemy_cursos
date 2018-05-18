@@ -15,3 +15,11 @@
         <script src="/assets/js/deps.min.js"></script>
         <script src="/assets/js/app.min.js"></script>
     </body>
+
+* corrigindo posicao do `footer`    
+
+    .main-footer{
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+    }
