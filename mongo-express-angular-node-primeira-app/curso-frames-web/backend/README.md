@@ -170,3 +170,29 @@
             }
         })
     })    
+
+# Realizando a agregacao de credito e debito
+
+* criando consulta que a agregacao de credito e debito
+* `$project: { credit: { $sum: "$credits.value" }, debt: { $sum: "$debts.value" } }` indica que retornara os campos creditos e debitos somados
+* `$group: { _id: null, credit: { $sum: "$credit" }, debt: { $sum: "$debt" } }` agrupara o resultado do de cima, e soma todos os valores encontrados
+* `$project: { _id: 0, credit: 1, debt: 1 }` retirando o `id` do resultado da consulta
+* `res.json(_.defaults(result[0], { credit: 0, debt: 0 }))` realiza o merge do resultado com um objeto `default`
+
+    function getSummary(req, res) {
+        BillingCycle.aggregate(
+            {
+                $project: { credit: { $sum: "$credits.value" }, debt: { $sum: "$debts.value" } }
+            }, {
+                $group: { _id: null, credit: { $sum: "$credit" }, debt: { $sum: "$debt" } }
+            }, {
+                $project: { _id: 0, credit: 1, debt: 1 }
+            }, function (error, result) {
+                if (error) {
+                    res.status(500).json({ errors: [error] })
+                } else {
+                    res.json(_.defaults(result[0], { credit: 0, debt: 0 }))
+                }
+            }
+        )
+    }
