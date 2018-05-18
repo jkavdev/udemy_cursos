@@ -154,3 +154,19 @@
 
 
     BillingCycle.updateOptions({new: true, runValidations: true})
+
+# Contantos os ciclos de pagamentos
+
+* criando um roteamento para `/count` para obter a quantidade de ciclos de pagamento
+* `BillingCycle.route('count', function (req, res, next) {}` um `route` com uma funcao `middleware`
+* `BillingCycle.count(function (error, value) {}` realizando a consulta no banco de dados
+
+    BillingCycle.route('count', function (req, res, next) {
+        BillingCycle.count(function (error, value) {
+            if (error) {
+                res.status(500).json({ errors: [error] })
+            } else {
+                res.json({ value })
+            }
+        })
+    })    
