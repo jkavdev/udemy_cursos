@@ -196,3 +196,10 @@
             }
         )
     }
+
+# Mapeando servido de sumario    
+
+* `router.route('/billingSummary').get(billingSummaryService.getSummary)` para requisicao `/billingSummary`, usara um get para a funcao `billingSummaryService.getSummary`
+
+    const billingSummaryService = require('../api/billingSummary/billingSummaryService')
+    router.route('/billingSummary').get(billingSummaryService.getSummary)
