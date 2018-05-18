@@ -203,3 +203,28 @@
 
     const billingSummaryService = require('../api/billingSummary/billingSummaryService')
     router.route('/billingSummary').get(billingSummaryService.getSummary)
+
+# Tratando os erros para o frontend
+* depois do `post` e `put` serao adicionados tratamento de erros `BillingCycle .after('post', sendErrorsOrNext) .after('put', sendErrorsOrNext)`
+* trata os erros ou segue o fluxo `function sendErrorsOrNext(req, res, next) {}`
+* objeto que contem os erros emitidos pelo requisicao do `rest` `const bundle = res.locals.bundle`
+* funcao que trata os erros do rest `function parseErrors(nodeRestfulErrors) {}`
+* como nos retorna um `array` dos erros do `rest`, iteraremos para pegar apenas a mensagem
+
+    BillingCycle
+        .after('post', sendErrorsOrNext)
+        .after('put', sendErrorsOrNext)
+    function sendErrorsOrNext(req, res, next) {
+        const bundle = res.locals.bundle
+        if (bundle.errors) {
+            var errors = parseErrors(bundle.errors)
+            res.status(500).json({ errors })
+        } else {
+            next()
+        }
+    }
+    function parseErrors(nodeRestfulErrors) {
+        const errors = []
+        _.forIn(nodeRestfulErrors, error => errors.push(error.message))
+        return errors
+    }    
