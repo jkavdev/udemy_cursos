@@ -23,3 +23,30 @@
         bottom: 0px;
         width: 100%;
     }
+
+# Configurando as rotas
+* objetos do `angular-router` que irao transitar entre as telas
+* `'$stateProvider', '$urlRouterProvider',`
+* `.state('dashboard', { url: '/dashboard', templateUrl: 'dashboard/dashboard.html' })`
+* indica o estado, `url` indica a `url` a ser alterada no `browser`, `templateUrl`, a pagina que sera carregada em `ui-vew`
+* caso nehnuma rota conhecida `$urlRouterProvider.otherwise('/billingCycle')` retorna para a rota padrao
+
+    angular.module('primeiraApp').config(
+    [
+        '$stateProvider',
+        '$urlRouterProvider',
+        function ($stateProvider, $urlRouterProvider) {
+            $stateProvider
+                .state('dashboard', {
+                    url: '/dashboard',
+                    templateUrl: 'dashboard/dashboard.html'
+                })
+                .state('billingCycle', {
+                    url: '/billingCycles',
+                    templateUrl: 'billingCycle/tabs.html'
+                })
+
+            $urlRouterProvider.otherwise('/billingCycle')
+        }
+    ]
+)    
