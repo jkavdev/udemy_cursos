@@ -88,3 +88,20 @@
     "col-xs-12 col-sm-4 col-md-6 col-lg-2"
     toCssClasses('12 2')
     "col-xs-12 col-lg-2"
+
+# Buscando os dados do sumario
+* `.success(function ({ credit = 0, debt = 0 }) {}` estamos indicando para extrair as variaveis e disponibiliza-las na funcao
+* atribuindo valores ao escopo `$scope.credit = credit $scope.debt = debt $scope.total = credit - debt`
+
+    $http.get(url)
+        .success(function ({ credit = 0, debt = 0 }) {
+            $scope.credit = credit
+            $scope.debt = debt
+            $scope.total = credit - debt
+        })    
+
+* formatando os valores exibidos dos creditos debitos e total
+
+    {{ credit | number: 2}}
+    {{ debt | number: 2}}
+    {{ total | number: 2}}
