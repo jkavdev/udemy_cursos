@@ -105,3 +105,22 @@
     {{ credit | number: 2}}
     {{ debt | number: 2}}
     {{ total | number: 2}}
+
+# atualizando metodo de requisicao para o angular 1.6
+
+* na nova versao do angular nao tem mais `success`
+
+    .success(function ({ credit = 0, debt = 0 }) {
+        $scope.credit = credit
+        $scope.debt = debt
+        $scope.total = credit - debt
+    })
+
+* teremos que mudar para o `then`
+
+    .then(function (response) {
+        const { credit = 0, debt = 0 } = response.data
+        $scope.credit = credit
+        $scope.debt = debt
+        $scope.total = credit - debt
+    })    
