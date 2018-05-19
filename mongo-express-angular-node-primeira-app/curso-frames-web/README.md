@@ -13,3 +13,12 @@
 * exibindo as aplicacoes em execucao
 
     pm2 status `backend`
+
+* retirando a aplicacao do pm2    
+
+    pm2 delete `backend`
+
+* monitorando a aplicacao
+
+    pm2 monit `backend`
+

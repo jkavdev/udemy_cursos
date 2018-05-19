@@ -228,3 +228,22 @@
         _.forIn(nodeRestfulErrors, error => errors.push(error.message))
         return errors
     }    
+
+# Habilitando `CORS`
+
+* criaremos um middleware para configurar as requisicoes permitidas e as origens
+* qualquer um pode acessar nossa aplicacao `res.header('Access-Control-Allow-Origin', '*')`
+* requisicoes permitidas `res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')`
+* seguindo o fluxo `next()`
+
+    module.exports = function (req, res, next) {
+        res.header('Access-Control-Allow-Origin', '*')
+        res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+        next()
+    }
+
+* habilitando no servidor
+
+    const allowCors = require('./cors')
+    server.use(allowCors)    
