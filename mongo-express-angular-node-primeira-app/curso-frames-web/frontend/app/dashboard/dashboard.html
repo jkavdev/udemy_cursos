@@ -1,37 +1,12 @@
 <content-header name="Dashboard" small="Versão 1.0"></content-header>
 
 <section class="content">
-    <div class="col-xs-4">
-        <div class="small-box bg-green">
-            <div class="inner">
-                <h3>R$ 10</h3>
-                <p>Total de créditos</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-bank"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3>R$ 25</h3>
-                <p>Total de débitos</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-credit-card"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="small-box bg-blue">
-            <div class="inner">
-                <h3>R$ 10</h3>
-                <p>Total consolidado</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-money"></i>
-            </div>
-        </div>
-    </div>
+    <value-box grid="4" color-class="bg-green" icon-class="fa-blank"
+        value="R$ 10" text="Total de créditos"></value-box>
+
+    <value-box grid="4" color-class="bg-red" icon-class="fa-credit-card"
+        value="R$ 10" text="Total de débitos"></value-box>
+
+    <value-box grid="4" color-class="bg-blue" icon-class="fa-money"
+        value="R$ 10" text="Total consolidado"></value-box>
 </section>
