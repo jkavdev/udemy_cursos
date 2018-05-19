@@ -50,3 +50,19 @@
         }
     ]
 )    
+
+# Componente do conteudo do Header
+
+* conteudo estatico, nao sofrera alteracao, apenas quando renderizado  `name: '@', small: '@',`
+
+    angular.module('primeiraApp').component('contentHeader', {
+        bindings: {
+            name: '@',
+            small: '@',
+        },
+        template: `
+            <section class="content-header">
+                <h1>{{ $ctrl.name }} <small>{{ $ctrl.small }}</small> </h1>
+            </section>
+        `
+    })
