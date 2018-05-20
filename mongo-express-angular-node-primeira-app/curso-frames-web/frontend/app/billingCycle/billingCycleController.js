@@ -41,6 +41,18 @@
             tabs.show(vm, { tabDelete: true })
         }
 
+        vm.update = function () {
+            const updateUrl = `${url}/${vm.billingCycle._id}`
+            $http.put(updateUrl, vm.billingCycle)
+                .then(function (response) {
+                    vm.refresh()
+                    msgs.addSuccess('Operação realizada com sucesso!')
+                }).catch(function (response) {
+                    console.log(response)
+                    msgs.addError(response.data.errors)
+                })
+        }
+
         vm.delete = function () {
             const deleteUrl = `${url}/${vm.billingCycle._id}`
             $http.delete(deleteUrl)

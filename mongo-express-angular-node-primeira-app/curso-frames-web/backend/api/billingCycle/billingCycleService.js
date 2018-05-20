@@ -2,7 +2,7 @@ const _ = require('lodash')
 const BillingCycle = require("./billingCycle")
 
 BillingCycle.methods(['get', 'post', 'put', 'delete'])
-BillingCycle.updateOptions({ new: true, runValidations: true })
+BillingCycle.updateOptions({ new: true, runValidators: true })
 
 BillingCycle
     .after('post', sendErrorsOrNext)
