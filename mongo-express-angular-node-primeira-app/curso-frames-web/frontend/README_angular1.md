@@ -66,3 +66,29 @@
     }
 
     return { addSuccess, addError }
+
+* utilizando o messages
+
+    msgs.addSuccess('Operação realizada com sucesso!')   
+
+# criando requisicao de atualizacao de dados
+
+* criando a funcao de reset dos dados `vm.refresh = function () { $http.get(url).then(function (response) {}`
+* chamando quando criarmos um ciclo de pagamento `$http.post(url, vm.billingCycle).then(function (response) { vm.refresh() }`
+* e quando este controller for invocado `vm.refresh()`
+
+    vm.refresh = function () {
+            $http.get(url)
+                .then(function (response) {
+                    vm.billingCycle = {}
+                    vm.billingCycles = response.data
+                })
+        }
+        vm.create = function () {
+            $http.post(url, vm.billingCycle)
+                .then(function (response) {
+                    vm.refresh()
+                })
+        }
+        vm.refresh()
+    }     
