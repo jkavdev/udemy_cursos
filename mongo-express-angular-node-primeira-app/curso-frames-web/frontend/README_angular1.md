@@ -92,3 +92,45 @@
         }
         vm.refresh()
     }     
+
+# Controle de abas
+
+* teremos uma `factory` que abstraira o controle das abas, apenas contendo as abas a serem exibidas
+* `function show(owner, { tabList = false, tabCreate = false, tabUpdate = false, tabDelete = false, }` temos uma funcao
+* que tem um dono e recebe um objeto com os atributos com valores padroes
+* aqui atribuimos o valor do dono `owner.tabList = tabList`
+
+    function TabsFactory() {
+        function show(owner, {
+            tabList = false,
+            tabCreate = false,
+            tabUpdate = false,
+            tabDelete = false,
+        }) {
+            owner.tabList = tabList
+            owner.tabCreate = tabCreate
+            owner.tabUpdate = tabUpdate
+            owner.tabDelete = tabDelete
+        }
+        return { show }
+    }        
+
+* indicando quais abas a serem exibidos de inicio
+* como estamos usando o `controller`, atribuimos o proprio `controller` como dono e quais abas a serem exibidas
+
+    tabs.show(vm, { tabList: true, tabCreate: true })    
+
+* escondendo o conteudo das abas com o ng-if
+
+    <li ng-if="bcCtrl.tabList">list-aba</li>    
+    <li ng-if="bcCtrl.tabCreate">create-aba</li>    
+    <li ng-if="bcCtrl.tabUpdate">update-aba</li>    
+    <li ng-if="bcCtrl.tabDelete">delete-aba</li>    
+
+    <div class="tab-pane" id="tabList" ng-include="'billingCycle/list.html'" ng-if="bcCtrl.tabList"></div>
+    <div class="tab-pane" id="tabCreate" ng-include="'billingCycle/form.html'" ng-if="bcCtrl.tabCreate"></div>
+    <div class="tab-pane" id="tabUpdate" ng-include="'billingCycle/form.html'" ng-if="bcCtrl.tabUpdate"></div>
+    <div class="tab-pane" id="tabDelete" ng-include="'billingCycle/form.html'" ng-if="bcCtrl.tabDelete"></div>
+
+    <button class="btn btn-info" ng-if="bcCtrl.tabUpdate">Alterar</button>
+    <button class="btn btn-danger" ng-if="bcCtrl.tabDelete">Excluir</button>
