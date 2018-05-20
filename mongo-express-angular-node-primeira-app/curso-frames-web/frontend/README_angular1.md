@@ -44,3 +44,25 @@
             [ `$http`, ])
         function DashboardController($http) { }
     })()
+
+# Mensagens com `tastr`    
+
+* configurando utils para mensagens
+* itera sobre as mensagens `msgs.forEach(msg => toastr[method](msg, title))` e chama o `toastr` para `method(error, success, warning)` passado
+* indica apenas os metodos a serem expostos, acessados `return { addSuccess, addError }`
+
+     function addMsg(msgs, title, method) {
+        if (msgs instanceof Array) {
+            msgs.forEach(msg => toastr[method](msg, title))
+        } else {
+            toastr[method](msgs, title)
+        }
+    }
+    function addSuccess(msgs) {
+        addMsg(msgs, 'Sucesso', 'success')
+    }
+    function addError(msgs) {
+        addMsg(msgs, 'Erro', 'error')
+    }
+
+    return { addSuccess, addError }

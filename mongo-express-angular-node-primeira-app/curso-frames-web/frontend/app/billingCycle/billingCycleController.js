@@ -1,22 +1,24 @@
 (function () {
     angular.module('primeiraApp').controller('BillingCycleCtrl',
         [
-            `$http`,
+            '$http',
+            'msgs',
             BillingCycleController
         ])
 
-    function BillingCycleController($http) {
+    function BillingCycleController($http, msgs) {
         const vm = this
         vm.billingCycle = {}
 
         vm.create = function () {
-
-            console.log(vm.billingCycle)
-
-            const url = 'http://localhost:3003/api/billingSummary'
+            const url = 'http://localhost:3003/api/billingCycles'
             $http.post(url, vm.billingCycle)
                 .then(function (response) {
-                    console.log('Tudo funcionando........')
+                    vm.billingCycle = {}
+                    msgs.addSuccess('Operação realizada com sucesso!')
+                }).catch(function (response) {
+                    console.log(response)
+                    msgs.addError(response.data.errors)
                 })
         }
 
