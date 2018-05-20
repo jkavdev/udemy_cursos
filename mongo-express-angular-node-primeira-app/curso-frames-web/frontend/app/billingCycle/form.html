@@ -3,6 +3,14 @@
         <field grid="12 6 4" id="name" label="Nome" placeholder="Informe o nome" model="bcCtrl.billingCycle.name" readonly="bcCtrl.tabDelete"></field>
         <field grid="12 6 4" id="month" label="Mês" placeholder="Informe o mês" type="number" model="bcCtrl.billingCycle.month" readonly="bcCtrl.tabDelete"></field>
         <field grid="12 6 4" id="year" label="Ano" placeholder="Informe o ano" type="number" model="bcCtrl.billingCycle.year" readonly="bcCtrl.tabDelete"></field>
+
+        <div class="col-xs-12 col-sm-6">
+            <fieldset>
+                <legend>Créditos</legend>
+                <div ng-include="'billingCycle/creditList.html'"></div>
+            </fieldset>
+        </div>
+
     </div>
     <div class="box-footer">
         <button class="btn btn-primary" ng-if="bcCtrl.tabCreate" ng-click="bcCtrl.create()">Incluir</button>

@@ -15,7 +15,7 @@
             $http.get(url)
                 .then(function (response) {
                     tabs.show(vm, { tabList: true, tabCreate: true })
-                    vm.billingCycle = {}
+                    vm.billingCycle = {credits: [{}], debts: [{}]}
                     vm.billingCycles = response.data
                 })
         }

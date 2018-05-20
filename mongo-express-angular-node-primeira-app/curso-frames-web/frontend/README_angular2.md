@@ -24,3 +24,36 @@
 * utilizando o `readonly`, indicaremos que ele sera `readonly` apenas quando for excluir `readonly="bcCtrl.tabDelete"`
 
     <field readonly="bcCtrl.tabDelete"></field>    
+
+# criando o cadastro de creditos do ciclo de pagamento
+
+* iterando sobre os creditos do ciclo `<tr ng-repeat="credit in bcCtrl.billingCycle.credits">`
+
+    <tbody>
+        <tr ng-repeat="credit in bcCtrl.billingCycle.credits">
+            <td>
+                <input ng-model="credit.name" class="form-control" placeholder="Informe o Nome" ng-readonly="bcCtrl.tabDelete">
+            </td>
+            <td>
+                <input ng-model="credit.value" class="form-control" placeholder="Informe o Valor" ng-readonly="bcCtrl.tabDelete" type="number">
+            </td>
+            <td class="table-actions">
+                <button class="btn btn-success" ng-class="{disabled: bcCtrl.tabDelete}"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-warning" ng-class="{disabled: bcCtrl.tabDelete}"><i class="fa fa-clone"></i></button>
+                <button class="btn btn-danger" ng-class="{disabled: bcCtrl.tabDelete}"><i class="fa fa-trash-o"></i></button>
+            </td>
+        </tr>
+    </tbody>
+
+* utilizando a pagina criada no `form`
+
+    <div class="col-xs-12 col-sm-6">
+        <fieldset>
+            <legend>Créditos</legend>
+            <div ng-include="'billingCycle/creditList.html'"></div>
+        </fieldset>
+    </div>    
+
+* adicionando pelo menos um credito e debito no ciclo de pagamento
+
+    vm.billingCycle = {credits: [{}], debts: [{}]}    
