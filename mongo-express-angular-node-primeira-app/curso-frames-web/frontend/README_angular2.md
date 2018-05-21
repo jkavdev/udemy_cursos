@@ -95,3 +95,55 @@
     <button ng-click="bcCtrl.addDebt($index)"></i></button>
     <button ng-click="bcCtrl.cloneDebt($index, credebtdit)"></button>
     <button ng-click="bcCtrl.deleteDebt($index)"></button>
+
+# Calculando os valores de creditos e debitos
+
+* iteraremos sobre os creditos e debitos para obter o total de creditos e debitos
+* `vm.billingCycle.credits.forEach(function ({ value }) {}` iterando sobre creditos e obtendo apenas o valor do credito
+* `vm.billingCycle.debts.forEach(function ({ value }) {}` iterando sobre debitos e obtendo apenas o valor do debito
+* `vm.credit += !value || isNaN(value) ? 0 : parseFloat(value)` icrementando o valor de creditos com value, verificamos se o valor eh valido `!value || isNaN(value)`
+
+
+    vm.calculateValues = function () {
+        vm.credit = 0
+        vm.debt = 0
+        if (vm.billingCycle) {
+            vm.billingCycle.credits.forEach(function ({ value }) {
+                vm.credit += !value || isNaN(value) ? 0 : parseFloat(value)
+            })
+            vm.billingCycle.debts.forEach(function ({ value }) {
+                vm.debt += !value || isNaN(value) ? 0 : parseFloat(value)
+            })
+        }
+        vm.total = vm.credit - vm.debt
+    }    
+
+* teremos que atualizar os calculos em pontos especificos
+
+    vm.refresh = function () {
+        vm.calculateValues()
+    }
+    vm.showTabUpdate = function (billingCycle) {
+        vm.calculateValues()
+    }
+    vm.showTabDelete = function (billingCycle) {
+        vm.calculateValues()
+    }
+    vm.cloneCredit = function (index, { name, value }) {
+        vm.calculateValues()
+    }
+    vm.deleteCredit = function (index) {
+        vm.calculateValues()
+    }
+    vm.cloneDebt = function (index, { name, value, status }) {
+        vm.calculateValues()
+    }
+    vm.deleteDebt = function (index) {
+        vm.calculateValues()
+    }    
+
+* e adicionando evento no campo do valor de credito e debito para atualizar os calculos
+* para isso usaremos o `ng-change="bcCtrl.calculateValues()"`
+
+    <input ng-model="debt.value" ng-change="bcCtrl.calculateValues()">
+    <input ng-model="credit.value" ng-change="bcCtrl.calculateValues()">

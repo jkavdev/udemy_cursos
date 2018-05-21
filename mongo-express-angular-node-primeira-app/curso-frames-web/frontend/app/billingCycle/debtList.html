@@ -14,7 +14,8 @@
                     <input ng-model="debt.name" class="form-control" placeholder="Informe o Nome" ng-readonly="bcCtrl.tabDelete">
                 </td>
                 <td>
-                    <input ng-model="debt.value" class="form-control" placeholder="Informe o Valor" ng-readonly="bcCtrl.tabDelete" type="number">
+                    <input ng-model="debt.value" class="form-control" placeholder="Informe o Valor" ng-readonly="bcCtrl.tabDelete" type="number"
+                        ng-change="bcCtrl.calculateValues()">
                 </td>
                 <td>
                     <input ng-model="debt.status" class="form-control" placeholder="Informe o Status" ng-readonly="bcCtrl.tabDelete">
