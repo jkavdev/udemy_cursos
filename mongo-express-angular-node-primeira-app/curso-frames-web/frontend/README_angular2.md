@@ -156,4 +156,54 @@
 
 * para que esteja desabilitado de fato, podemos usar o ng-disabled
 
-    ng-disabled="bcCtrl.tabDelete"        
+    ng-disabled="bcCtrl.tabDelete"   
+
+# Implementando a paginacao
+
+* permitindo que a rota de listagem aceita parametros na requisicao       
+* `url: '/billingCycles?page',` indicando a pagina a ser buscada
+
+    .state('billingCycle', {
+        url: '/billingCycles?page',
+        templateUrl: 'billingCycle/tabs.html'
+    })
+
+ * realizando a busca
+
+    http://localhost:3000/#!/billingCycles?page=1    
+    http://localhost:3000/#!/billingCycles?page=2    
+    http://localhost:3000/#!/billingCycles?page=3    
+
+* realizando o parse dos valores de skip e limit para inteiros
+* o mongo aceita estes valores como inteiros, por isso a necessidade do parse
+
+    const queryParser = require('express-query-int')
+    server.use(queryParser())
+
+* montando `url` para busca paginada
+* com `'$location',` podemos obter informacoes que passamos na `url`
+* obtendo valor de pages da url `$location.search().page`
+* url paginada `${url}?skip=${((page - 1) * 10)}&limit=10`
+* realizando busca da contagem de registros `$http.get(${url}/count) .then(function (response) { vm.pages = Math.ceil(response.data.value / 10) })`
+
+    angular.module('primeiraApp').controller('BillingCycleCtrl',
+        [
+            '$location',
+        ])
+
+    function BillingCycleController($http, $location, msgs, tabs) {
+        const vm = this
+        const url = 'http://localhost:3003/api/billingCycles'
+
+        vm.refresh = function () {
+            const page = parseInt($location.search().page) || 1
+            const paginatedUrl = `${url}?skip=${((page - 1) * 10)}&limit=10`
+            $http.get(paginatedUrl)
+                .then(function (response) {
+                    vm.billingCycle = { credits: [{}], debts: [{}] }
+                    $http.get(`${url}/count`)
+                        .then(function (response) {
+                            vm.pages = Math.ceil(response.data.value / 10)
+                        })
+                })
+        }   
