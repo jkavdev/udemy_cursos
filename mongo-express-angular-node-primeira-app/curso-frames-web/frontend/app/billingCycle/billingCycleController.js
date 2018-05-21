@@ -79,6 +79,9 @@
         vm.addCredit = function (index) {
             vm.billingCycle.credits.splice(index + 1, 0, {})
         }
+        vm.addEmptyCredit = function () {
+            vm.billingCycle.credits = [{}]
+        }
         vm.cloneCredit = function (index, { name, value }) {
             vm.billingCycle.credits.splice(index + 1, 0, { name, value })
             vm.calculateValues()
@@ -92,6 +95,9 @@
 
         vm.addDebt = function (index) {
             vm.billingCycle.debts.splice(index + 1, 0, {})
+        }
+        vm.addEmptyDebt = function () {
+            vm.billingCycle.debts = [{}]
         }
         vm.cloneDebt = function (index, { name, value, status }) {
             vm.billingCycle.debts.splice(index + 1, 0, { name, value, status })

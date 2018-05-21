@@ -13,12 +13,14 @@
             <fieldset>
                 <legend>Créditos</legend>
                 <div ng-include="'billingCycle/creditList.html'"></div>
+                <button class="btn btn-success" ng-if="!bcCtrl.billingCycle.credits.length" ng-click="bcCtrl.addEmptyCredit()"><i class="fa fa-plus" title="Adiconar Crédito"></i></button>
             </fieldset>
         </div>
         <div class="col-xs-12 col-sm-6">
             <fieldset>
                 <legend>Débitos</legend>
                 <div ng-include="'billingCycle/debtList.html'"></div>
+                <button class="btn btn-success" ng-if="!bcCtrl.billingCycle.debts.length" ng-click="bcCtrl.addEmptyDebt()" title="Adiconar Débito"><i class="fa fa-plus"></i></button>
             </fieldset>
         </div>
 
