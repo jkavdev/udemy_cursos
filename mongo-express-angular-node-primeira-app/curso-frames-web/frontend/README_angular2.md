@@ -57,3 +57,41 @@
 * adicionando pelo menos um credito e debito no ciclo de pagamento
 
     vm.billingCycle = {credits: [{}], debts: [{}]}    
+
+# realizando as operacoes com creditos e debitos
+
+* faremos as alteracoes com o `splice` dos creditos e debitos 
+* `vm.billingCycle.credits.splice(index + 1, 0, {})` indicado para adicionar um objeto vazio na posicao `index + 1`, e nehum elemento a remover
+* `vm.billingCycle.credits.splice(index + 1, 0, { name, value })` clonando o objeto, com o mesmo comportamento acima, mas agora passando um objeto com dados
+* `vm.billingCycle.credits.splice(index, 1)` removendo o objeto com o `index`, e indicando a quantidade de elementos a serem removidos, apenas um
+
+    vm.addCredit = function (index) {
+        vm.billingCycle.credits.splice(index + 1, 0, {})
+    }
+    vm.cloneCredit = function (index, { name, value }) {
+        vm.billingCycle.credits.splice(index + 1, 0, { name, value })
+    }
+    vm.deleteCredit = function (index) {
+        if (vm.billingCycle.credits.length > 1)
+        vm.billingCycle.credits.splice(index, 1)
+    }
+    vm.addDebt = function (index) {
+        vm.billingCycle.debts.splice(index + 1, 0, {})
+    }
+    vm.cloneDebt = function (index, { name, value }) {
+        vm.billingCycle.debts.splice(index + 1, 0, { name, value })
+    }
+    vm.deleteDebt = function (index) {
+        if(vm.billingCycle.debts.length > 1)
+        vm.billingCycle.debts.splice(index, 1)
+    }    
+
+* utilizando no formulario, com os botoes de creditos e debitos
+* no angular temos acesso ao `index` atual, com o objeto `$index` `bcCtrl.addCredit($index)`
+
+    <button ng-click="bcCtrl.addCredit($index)"></i></button>
+    <button ng-click="bcCtrl.cloneCredit($index, credebtdit)"></button>
+    <button ng-click="bcCtrl.deleteCredit($index)"></button>
+    <button ng-click="bcCtrl.addDebt($index)"></i></button>
+    <button ng-click="bcCtrl.cloneDebt($index, credebtdit)"></button>
+    <button ng-click="bcCtrl.deleteDebt($index)"></button>

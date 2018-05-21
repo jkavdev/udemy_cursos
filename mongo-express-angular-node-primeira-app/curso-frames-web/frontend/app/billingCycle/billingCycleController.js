@@ -15,7 +15,7 @@
             $http.get(url)
                 .then(function (response) {
                     tabs.show(vm, { tabList: true, tabCreate: true })
-                    vm.billingCycle = {credits: [{}], debts: [{}]}
+                    vm.billingCycle = { credits: [{}], debts: [{}] }
                     vm.billingCycles = response.data
                 })
         }
@@ -34,7 +34,7 @@
         vm.showTabUpdate = function (billingCycle) {
             vm.billingCycle = billingCycle
             tabs.show(vm, { tabUpdate: true })
-        
+
         }
         vm.showTabDelete = function (billingCycle) {
             vm.billingCycle = billingCycle
@@ -63,6 +63,28 @@
                     console.log(response)
                     msgs.addError(response.data.errors)
                 })
+        }
+
+        vm.addCredit = function (index) {
+            vm.billingCycle.credits.splice(index + 1, 0, {})
+        }
+        vm.cloneCredit = function (index, { name, value }) {
+            vm.billingCycle.credits.splice(index + 1, 0, { name, value })
+        }
+        vm.deleteCredit = function (index) {
+            if (vm.billingCycle.credits.length > 1)
+            vm.billingCycle.credits.splice(index, 1)
+        }
+
+        vm.addDebt = function (index) {
+            vm.billingCycle.debts.splice(index + 1, 0, {})
+        }
+        vm.cloneDebt = function (index, { name, value }) {
+            vm.billingCycle.debts.splice(index + 1, 0, { name, value })
+        }
+        vm.deleteDebt = function (index) {
+            if(vm.billingCycle.debts.length > 1)
+            vm.billingCycle.debts.splice(index, 1)
         }
 
         vm.refresh()
