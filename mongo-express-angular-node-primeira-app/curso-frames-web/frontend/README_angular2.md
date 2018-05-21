@@ -147,3 +147,13 @@
 
     <input ng-model="debt.value" ng-change="bcCtrl.calculateValues()">
     <input ng-model="credit.value" ng-change="bcCtrl.calculateValues()">
+
+# Desabilitando os botoes na tela de exclusao
+
+* nos botoes de creditoes e debitos estavamos apenas alterando a classe css do botao, nao estava desabilitado de fato
+
+    ng-class="{disabled: bcCtrl.tabDelete}"
+
+* para que esteja desabilitado de fato, podemos usar o ng-disabled
+
+    ng-disabled="bcCtrl.tabDelete"        
