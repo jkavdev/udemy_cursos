@@ -207,3 +207,62 @@
                         })
                 })
         }   
+
+# Implementando a paginacao
+
+* utilizando o componente de paginacao
+* passamos a url de requisicao para os dados `url="/#!/billingCycles"`
+* e a quantidade de paginas a exibir no componente
+
+        <div class="box-footer clearfix">
+            <paginator url="/#!/billingCycles" pages="bcCtrl.pages"></paginator> 
+        </div>            
+
+* componente
+* convertendo as paginas em um inteiro `var pages = parseInt(this.pages) || 1;`
+* constroi um array com size of pages preenchidos ate o final size com index + 1 `this.pagesArray = Array(pages).fill(0).map((e, i) => i + 1);`
+* pegando a pagina atual da url `this.current = parseInt($location.search().page) || 1;`
+* `this.needPagination = this.pages > 1;` nao precisa de paginacao com apenas uma pagina
+* obtendo proximo e anterior `this.hasPrev = this.current > 1; this.hasNext = this.current < this.pages;`
+* obtendo se eh o atual com o index `this.isCurrent = function (i) { return this.current == i }`
+
+        angular.module('primeiraApp').component('paginator', {
+            bindings:
+                {
+                    url: '@',
+                    pages: '@',
+                },
+            controller:
+                [
+                    '$location',
+                    function ($location) {
+                        this.$onInit = function () {
+                            var pages = parseInt(this.pages) || 1;
+                            this.pagesArray = Array(pages).fill(0).map((e, i) => i + 1);
+                            this.current = parseInt($location.search().page) || 1;
+                            this.needPagination = this.pages > 1;
+                            this.hasPrev = this.current > 1;
+                            this.hasNext = this.current < this.pages;
+
+                            this.isCurrent = function (i) {
+                                return this.current == i
+                            }
+                        }
+
+                    }
+                ],
+            template:
+                `
+            <ul ng-if="$ctrl.needPagination" class="pagination pagination-sm no-margin pull-right">
+                <li ng-if="$ctrl.hasPrev">
+                <a href="{{ $ctrl.url }}?page={{ $ctrl.current - 1}}">«</a>
+                </li>
+                <li ng-class="{active: $ctrl.isCurrent(i)}" ng-repeat="i in $ctrl.pagesArray">
+                <a href="{{ $ctrl.url }}?page={{i}}">{{i}}</a>
+                </li>
+                <li ng-if="$ctrl.hasNext">
+                <a href="{{ $ctrl.url }}?page={{ $ctrl.current + 1}}">»</a>
+                </li>
+            </ul>
+            `
+        });        
