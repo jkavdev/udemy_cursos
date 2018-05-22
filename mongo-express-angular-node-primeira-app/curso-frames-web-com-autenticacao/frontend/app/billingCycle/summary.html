@@ -1,0 +1,10 @@
+<section class="row">
+    <value-box grid="12 4" color-class="bg-green" icon-class="fa-bank"
+        value="R$ {{ bcCtrl.credit | number: 2}}" text="Total de créditos"></value-box>
+
+    <value-box grid="12 4" color-class="bg-red" icon-class="fa-credit-card"
+        value="R$ {{ bcCtrl.debt | number: 2}}" text="Total de débitos"></value-box>
+
+    <value-box grid="12 4" color-class="bg-blue" icon-class="fa-money"
+        value="R$ {{ bcCtrl.total | number: 2}}" text="Total consolidado"></value-box>
+</section>
