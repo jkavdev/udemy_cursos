@@ -1,13 +1,12 @@
-<div class="box-body">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Mês</th>
-                <th>Ano</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+# Curso Mongo, Express, Angular 1 e Node - Primeira App do Zero com `Leonardo Moura Leitao`
+
+# Instalar o Batarang
+
+* o Batarang fornecera informacoes sobre a aplicacao angular
+
+# Indicando para o angular apenas o oneWayDatabind 
+* `<td>{{:: billingCycle.name }}</td>` com `::` indicamos ao angular que ele apenas precisa cuidar deste campo na renderizacao
+
         <tbody>
             <tr ng-repeat="billingCycle in bcCtrl.billingCycles">
                 <td>{{:: billingCycle.name }}</td>
@@ -19,8 +18,3 @@
                 </td>
             </tr>
         </tbody>
-    </table>
-</div>
-<div class="box-footer clearfix">
-    <paginator url="/#!/billingCycles" pages="{{ bcCtrl.pages }}"></paginator> 
-</div>
