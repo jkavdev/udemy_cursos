@@ -116,4 +116,45 @@
                     })
                 }
             })
-        }        
+        }     
+
+* middleware para a validacao do token
+* ignorando o metodo options `if (req.method === 'OPTIONS') { next() }`
+* obtendo o token `const token = req.body.token || req.query.token || req.headers['authorization']`
+* senao tiver token, ja da erro `if (!token) { return res.status(403).send({ erros: ['No token provided.'] }) }`
+* se tiver, realiza a verificacao com o jwt 
+
+        jwt.verify(token, env.authSecret, function (err, decoded) {
+            if (err) {
+                return res.status(403).send({ erros: ['Failed to authenticate token.'] })
+            } else {
+                req.decoded = decoded
+                next()
+            }
+        })
+
+        module.exports = (req, res, next) => {
+            if (req.method === 'OPTIONS') {
+                next()
+            } else {
+                const token = req.body.token || req.query.token || req.headers['authorization']
+
+                if (!token) {
+                    return res.status(403).send({ erros: ['No token provided.'] })
+                }
+
+                jwt.verify(token, env.authSecret, function (err, decoded) {
+                    if (err) {
+                        return res.status(403).send({ erros: ['Failed to authenticate token.'] })
+                    } else {
+                        req.decoded = decoded
+                        next()
+                    }
+                })
+
+            }
+        }           
+
+* habilitando mais um cabecalho
+
+        res.header('Access-Control-Allow-Headers', ' Authorization')        
