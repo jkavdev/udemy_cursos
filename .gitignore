@@ -25,3 +25,4 @@
 /mongo-express-angular-node-primeira-app/curso-frames-web-com-autenticacao/frontend/public/template/menu.html
 /mongo-express-angular-node-primeira-app/curso-frames-web-com-autenticacao/frontend/public/billingCycle/summary.html
 /mongo-express-angular-node-primeira-app/curso-frames-web-com-autenticacao/frontend/public/billingCycle/tabs.html
+*.gitignore
