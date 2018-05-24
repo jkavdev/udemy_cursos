@@ -158,3 +158,29 @@
 * habilitando mais um cabecalho
 
         res.header('Access-Control-Allow-Headers', ' Authorization')        
+
+# Definindo nivel de acesso as rotas do backend
+
+* rotas que nao terao verificao de autenticacao
+* temos a rota `'/oapi'` indicando as rotas abertas sem autenticacao
+* e os seguintes servicos abertos `'/login', '/signup', '/validateToken'`
+
+        * Rotas abertas
+        const openApi = express.Router()
+        server.use('/oapi', openApi)
+        const AuthService = require('../api/user/authService')
+        openApi.post('/login', AuthService.login)
+        openApi.post('/signup', AuthService.signup)
+        openApi.post('/validateToken', AuthService.validateToken)        
+
+* rotas que terao a verificacao de autenticacao
+* tudo que vier da rota `'/api'` tera autenticacao
+
+        * Rotas protegidas por Token JWT
+        const protectedApi = express.Router()
+        server.use('/api', protectedApi)
+        protectedApi.use(auth)
+        const billingCycleService = require('../api/billingCycle/billingCycleService')
+        billingCycleService.register(protectedApi, '/billingCycles')
+        const billingSummaryService = require('../api/billingSummary/billingSummaryService')
+        protectedApi.route('/billingSummary').get(billingSummaryService.getSummary)        
