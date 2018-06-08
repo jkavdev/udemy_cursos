@@ -7,6 +7,7 @@ import java.util.Date;
 import br.com.jkavdev.wcaquino.testesunitarios.entidades.Filme;
 import br.com.jkavdev.wcaquino.testesunitarios.entidades.Locacao;
 import br.com.jkavdev.wcaquino.testesunitarios.entidades.Usuario;
+import br.com.jkavdev.wcaquino.testesunitarios.utils.DataUtils;
 
 public class LocacaoService {
 	
@@ -29,6 +30,19 @@ public class LocacaoService {
 	}
 
 	public static void main(String[] args) {
+		
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Usuario usuario = new Usuario("Jhonatan");
+		Filme filme = new Filme("Annihilation", 50, 26.3);
+		
+		//acao
+		Locacao locacao = service.alugarFilme(usuario, filme);
+		
+		//verificacao
+		System.out.println(locacao.getValor() == 26.3);
+		System.out.println(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
+		System.out.println(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
 		
 	}
 }
