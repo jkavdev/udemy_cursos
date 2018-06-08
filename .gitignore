@@ -26,3 +26,6 @@
 /mongo-express-angular-node-primeira-app/curso-frames-web-com-autenticacao/frontend/public/billingCycle/summary.html
 /mongo-express-angular-node-primeira-app/curso-frames-web-com-autenticacao/frontend/public/billingCycle/tabs.html
 *.gitignore
+/testes-unitarios-domine-junit-mockito-tdd/2-junit/testes-unitarios/target/classes/META-INF/MANIFEST.MF
+/testes-unitarios-domine-junit-mockito-tdd/2-junit/testes-unitarios/target/classes/META-INF/maven/br.com.jkavdev.wcaquino.testesunitarios/testes-unitarios/pom.properties
+/testes-unitarios-domine-junit-mockito-tdd/2-junit/testes-unitarios/target/classes/META-INF/maven/br.com.jkavdev.wcaquino.testesunitarios/testes-unitarios/pom.xml
