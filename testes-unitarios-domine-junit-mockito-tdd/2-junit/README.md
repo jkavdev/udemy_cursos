@@ -63,4 +63,37 @@
 			Assert.assertTrue(locacao.getValor() == 26.1);
 			Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
 			Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
-		}		
+		}	
+		
+# Reestruturando local dos testes	
+
+* colocando os testes em outro `source folder`
+* estaremos separando os arquivos fisicamente, mas o java logicamente entende que os arquivos 
+* possam estar no mesmo pacote
+
+		src/main/java
+			br.com.jkavdev.wcaquino.testesunitarios.servicos/LocacaoService.java
+			
+		src/test/java
+			br.com.jkavdev.wcaquino.testesunitarios.servicos/LocacaoServiceTest.java
+			
+* pontos a se considerar com a separacao dos testes para o mesmo pacote
+
+		public class LocacaoService {
+			public String vPublica;
+			private String vPrivate;
+			protected String vProtected;
+			String vDefault;
+		}
+
+* acessando as variaveis `default` e `protected`
+
+		public class LocacaoServiceTest {
+			@Test
+			public void teste() {
+				LocacaoService service = new LocacaoService();
+				service.vDefault;
+				service.vProtected;
+				service.vPublica;
+			}
+		}					
