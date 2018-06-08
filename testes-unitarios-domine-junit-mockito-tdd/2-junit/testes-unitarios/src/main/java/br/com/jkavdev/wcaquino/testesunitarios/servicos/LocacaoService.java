@@ -4,6 +4,9 @@ import static br.com.jkavdev.wcaquino.testesunitarios.utils.DataUtils.adicionarD
 
 import java.util.Date;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import br.com.jkavdev.wcaquino.testesunitarios.entidades.Filme;
 import br.com.jkavdev.wcaquino.testesunitarios.entidades.Locacao;
 import br.com.jkavdev.wcaquino.testesunitarios.entidades.Usuario;
@@ -29,7 +32,8 @@ public class LocacaoService {
 		return locacao;
 	}
 
-	public static void main(String[] args) {
+	@Test
+	public void teste() {
 		
 		//cenario
 		LocacaoService service = new LocacaoService();
@@ -40,9 +44,9 @@ public class LocacaoService {
 		Locacao locacao = service.alugarFilme(usuario, filme);
 		
 		//verificacao
-		System.out.println(locacao.getValor() == 26.3);
-		System.out.println(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
-		System.out.println(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
+		Assert.assertTrue(locacao.getValor() == 26.1);
+		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
+		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
 		
 	}
 }

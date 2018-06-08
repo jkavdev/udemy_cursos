@@ -28,3 +28,39 @@
 * I. - um teste tem que ser independente
 * R. - um teste tem que ser repetivel, possa ser executado varias vezes
 * S. - um teste tem que saber se avaliar, indicando se o teste passou ou nao
+
+# JUnit
+
+* utilizando o `JUnit` para realizar os testes unitarios e que implementa todos os requisitos do `F.I.R.S.T.`
+
+* adicionando dependencia no projeto
+
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+			</dependency>
+		</dependencies>
+		
+* criando um metodo de teste
+* para indicamos o metodo com `@Test`
+* utilizando as assertivas do `JUnit`, `Assert.assertTrue()`, indicamos que o resultado tem que ser verdadeiro
+* do qual importamos de `import org.junit.`
+
+		@Test
+		public void teste() {
+			
+			//cenario
+			LocacaoService service = new LocacaoService();
+			Usuario usuario = new Usuario("Jhonatan");
+			Filme filme = new Filme("Annihilation", 50, 26.3);
+			
+			//acao
+			Locacao locacao = service.alugarFilme(usuario, filme);
+			
+			//verificacao
+			Assert.assertTrue(locacao.getValor() == 26.1);
+			Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
+			Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
+		}		
