@@ -36,4 +36,8 @@
 
 * acessando a aplicacao
 
-		localhost:8080/		
+		localhost:8080/
+
+# Rodando a aplicacao com o maven
+
+		mvn spring-boot:run
