@@ -41,3 +41,7 @@
 # Rodando a aplicacao com o maven
 
 		mvn spring-boot:run
+
+# Rodando a aplicacao com o gradle
+
+		gradle bootRun
