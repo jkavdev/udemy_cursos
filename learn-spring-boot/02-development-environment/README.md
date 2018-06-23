@@ -7,3 +7,9 @@
         * baixar arquivo contendo os binarios do groovy
         * criar variavel de ambiente
         * apontar variavel criada no path
+
+* Configurando o gradle
+
+		* baixar arquivo contendo os binarios do gradle
+        * criar variavel de ambiente
+        * apontar variavel criada no path
