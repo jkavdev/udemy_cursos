@@ -2,14 +2,21 @@
 
 # Development Environment
 
-* Configurando o groovy
+# Configurando o groovy
 
-        * baixar arquivo contendo os binarios do groovy
-        * criar variavel de ambiente
-        * apontar variavel criada no path
+* baixar arquivo contendo os binarios do groovy
+* criar variavel de ambiente
+* apontar variavel criada no path
 
-* Configurando o gradle
+# Configurando o gradle
 
-		* baixar arquivo contendo os binarios do gradle
-        * criar variavel de ambiente
-        * apontar variavel criada no path
+* baixar arquivo contendo os binarios do gradle
+* criar variavel de ambiente
+* apontar variavel criada no path
+
+# Instalando o Spring Boot CLI        
+
+* baixar arquivo contendo os binarios do spring boot cli
+* criar variavel de ambiente
+* apontar variavel criada no path
+
