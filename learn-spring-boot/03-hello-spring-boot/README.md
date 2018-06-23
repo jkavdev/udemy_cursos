@@ -18,3 +18,22 @@
 * rodando aplicacaco, indicando o arquivo e a porta para acessa-lo
 
 		spring run app.groovy -- --server.port=9000
+
+* criando uma aplicacao spring boot java
+
+* ir no site https://start.spring.io/
+* criar o projeto spring boot com o modulo web
+* iniciar em alguma ide o projeto e executar a classe principal
+* temos um controller que fica escutando uri base do projeto
+
+		@RestController
+		public class HomeController {
+			@RequestMapping("/")
+			public String home(){
+				return "Massa, ta funcionando......";
+			}
+		}
+
+* acessando a aplicacao
+
+		localhost:8080/		
