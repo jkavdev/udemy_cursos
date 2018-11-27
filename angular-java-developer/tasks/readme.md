@@ -26,8 +26,12 @@
 
     
         "styles": [
-          "../node_modules/bootstrap/dist/css/bootstrap.css",
+            "node_modules/bootstrap/dist/css/bootstrap.min.css",
           "src/styles.css"
-        ],        
+        ],  
         
+* configurando identacao dos ``sources`` do `angular`
+
+    
+        indent_size = 4        
                 
