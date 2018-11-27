@@ -15,3 +15,19 @@
         ng g c tasks                    
         ng g c tasks/tasks-add                    
         ng g c tasks/tasks-list          
+        
+# Bootstrap
+* instalando a dependencia do ``bootstrap``
+    
+    
+        npm install --save bootstrap
+        
+* declarando ``bootstrap`` no projeto
+
+    
+        "styles": [
+          "../node_modules/bootstrap/dist/css/bootstrap.css",
+          "src/styles.css"
+        ],        
+        
+                
