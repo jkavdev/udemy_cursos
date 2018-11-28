@@ -7,13 +7,18 @@ import {Task} from "./task.model";
 @Injectable()
 export class TaskService {
 
-    taskUrl = '/api/tasks'
+    taskUrl = '/api/tasks';
 
     constructor(private http: HttpClient) {
     }
 
     getTasks(): Observable<Task[]> {
-        return this.http.get<Task[]>(this.taskUrl)
+        return this.http.get<Task[]>(this.taskUrl);
+    }
+
+    saveTask(task: Task, checked: boolean): Observable<Task>{
+        task.completed = checked;
+        return this.http.post<Task>(`${this.taskUrl}/save`, task);
     }
 
 }
