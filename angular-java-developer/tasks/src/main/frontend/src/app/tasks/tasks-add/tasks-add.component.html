@@ -1,3 +1,5 @@
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="Add New Taks">
+    <input type="text" class="form-control" placeholder="Add New Taks"
+           (keyup.enter)="onTaskAdd($event)"
+           [(ngModel)]="addTaskValue" />
 </div>
